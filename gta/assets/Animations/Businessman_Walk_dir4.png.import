@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs1bypfpmxmf0"
-path="res://.godot/imported/DarkRoad.png-01bd74e9b69da0bdcf7384a6d8e56a0b.ctex"
+uid="uid://cocw6tvwhbmyh"
+path="res://.godot/imported/Businessman_Walk_dir4.png-aa85f083f61755bda3bff52ab9d2fe9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DarkRoad.png"
-dest_files=["res://.godot/imported/DarkRoad.png-01bd74e9b69da0bdcf7384a6d8e56a0b.ctex"]
+source_file="res://assets/Animations/Businessman_Walk_dir4.png"
+dest_files=["res://.godot/imported/Businessman_Walk_dir4.png-aa85f083f61755bda3bff52ab9d2fe9a.ctex"]
 
 [params]
 

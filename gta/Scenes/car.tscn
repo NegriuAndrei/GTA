@@ -1,15 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://bii67q6vieu40"]
 
-[ext_resource type="Script" uid="uid://dl54fo16v4t4r" path="res://car.gd" id="1_0f027"]
+[ext_resource type="Script" uid="uid://dl54fo16v4t4r" path="res://assets/scripts/car.gd" id="1_0f027"]
 [ext_resource type="Texture2D" uid="uid://cg54ep80m6nnh" path="res://assets/cars/car1.png" id="2_2c62f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfs4"]
 size = Vector2(397, 213)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoj53"]
-radius = 158.202
+radius = 311.223
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Car" type="CharacterBody2D"]
 position = Vector2(2, 0)
 scale = Vector2(0.055, 0.055)
 script = ExtResource("1_0f027")
@@ -26,6 +26,7 @@ shape = SubResource("RectangleShape2D_gyfs4")
 
 [node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
+[node name="enter_car" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_uoj53")
+
+[node name="Camera2D" type="Camera2D" parent="."]

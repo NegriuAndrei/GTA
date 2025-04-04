@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl3pso8odkqsg"]
+
+[ext_resource type="Texture2D" uid="uid://630tuhv6m0mi" path="res://assets/background/background.png" id="1_go701"]
+[ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="2_5a7ea"]
+
+[node name="World" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(179.71, 179.895)
+rotation = 1.5708
+scale = Vector2(4.4, 3.72)
+texture = ExtResource("1_go701")
+
+[node name="Car" parent="." instance=ExtResource("2_5a7ea")]
+
+[node name="Camera2D2" type="Camera2D" parent="Car"]
+zoom = Vector2(0.51, 0.51)
