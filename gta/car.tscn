@@ -4,14 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://cg54ep80m6nnh" path="res://assets/cars/car1.png" id="2_2c62f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfs4"]
-size = Vector2(208, 410)
+size = Vector2(397, 213)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uoj53"]
 radius = 158.202
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(2, 0)
+scale = Vector2(0.055, 0.055)
 script = ExtResource("1_0f027")
-friction = -160
+engine_power = 340
 slip_speed = 35
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,10 +21,11 @@ rotation = 1.5708
 texture = ExtResource("2_2c62f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 5)
+position = Vector2(-14.5, -0.5)
 shape = SubResource("RectangleShape2D_gyfs4")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("CircleShape2D_uoj53")

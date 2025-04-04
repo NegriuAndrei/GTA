@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GTA"
-run/main_scene="uid://bl3pso8odkqsg"
+run/main_scene="uid://uqdpcjl7yspt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
