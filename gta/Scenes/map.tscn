@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://uqdpcjl7yspt"]
+[gd_scene load_steps=20 format=4 uid="uid://uqdpcjl7yspt"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dgmenumc7axtg" path="res://assets/buildings/building_corner1.png" id="11_x5dfk"]
 [ext_resource type="Texture2D" uid="uid://lbf004gk2ll3" path="res://assets/buildings/building_tall3.png" id="12_fls3e"]
 [ext_resource type="Texture2D" uid="uid://cwye7veoqbay2" path="res://assets/buildings/building4.png" id="13_5qtum"]
+[ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="14_ie368"]
+[ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -90,9 +92,17 @@ texture = ExtResource("1_26yhd")
 9:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_e0an3"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_wijl4")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ie368"]
+
+[sub_resource type="Curve2D" id="Curve2D_ie368"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 46, -67, 0, 0, 0, 0, 451, -67, 0, 0, 0, 0, 466, -67, 0, 0, 0, 0, 465, -182, 0, 0, 0, 0, 468, -583, 0, 0, 0, 0, -1, -582, 0, 0, 0, 0, -80, -581, 0, 0, 0, 0, -79, -554, 0, 0, 0, 0, 413, -550, 0, 0, 0, 0, 420, -251, 0, 0, 0, 0, 416, -93, 0, 0, 0, 0, 49, -93, 0, 0, 0, 0, 45, -69)
+}
+point_count = 13
 
 [node name="Map" type="Node2D"]
 script = ExtResource("1_myvm1")
@@ -108,7 +118,7 @@ tile_set = SubResource("TileSet_e0an3")
 [node name="Player" parent="." groups=["PlayerGroup"] instance=ExtResource("2_26yhd")]
 
 [node name="Car" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
-position = Vector2(77, -64)
+position = Vector2(28, -95)
 
 [node name="Car2" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
 position = Vector2(-23, -69)
@@ -740,3 +750,79 @@ position = Vector2(1005, -711)
 rotation = 1.5708
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("10_ie368")
+
+[node name="Car3" parent="." instance=ExtResource("14_ie368")]
+position = Vector2(46, -66)
+script = ExtResource("15_x5dfk")
+path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
+path_follow_node = NodePath("../Path2D/PathFollow2D")
+
+[node name="Buildings Colliders" type="StaticBody2D" parent="."]
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_ie368")
+
+[node name="Outer" type="CollisionPolygon2D" parent="Buildings Colliders"]
+build_mode = 1
+polygon = PackedVector2Array(-62, 36, -61, -106, -154, -106, -153, 36, -231, 36, -230, -172, -231, -207, -188, -207, -117, -220, -117, -306, -117, -499, -117, -828, -117, -908, -101, -908, -98, -848, 66, -849, 67, -908, 82, -908, 81, -854, 81, -854, 91, -846, 175, -846, 175, -908, 263, -908, 263, -852, 394, -850, 396, -850, 396, -907, 502, -907, 503, -853, 636, -851, 636, -908, 739, -908, 739, -849, 852, -848, 852, -908, 928, -908, 928, -842, 1003, -841, 995, -908, 1049, -907, 1048, -842, 982, -830, 982, -742, 1049, -740, 1049, -683, 986, -682, 979, -672, 980, -611, 1049, -610, 1049, -534, 978, -533, 978, -288, 1048, -288, 1049, -212, 968, -212, 965, -207, 965, -178, 959, -178, 959, -175, 915, -175, 916, -128, 1005, -128, 1005, -119, 1007, -114, 1049, -114, 1049, -17, 1031, -29, 888, -30, 887, 36, 795, 36, 795, -20, 545, -20, 537, -21, 537, -22, 373, -22, 372, 36, 286, 36, 286, -23, 176, -24, 165, -15, 120, -15, 116, -37, 24, -38, 24, 37)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(-107, -156, -62, -156, -62, -149, 0, -149, 0, -159, 44, -159, 44, -149, 82, -149, 106, -149, 106, -155, 142, -155, 141, -153, 189, -153, 189, -142, 214, -142, 214, -122, 216, -118, 398, -119, 397, -211, 347, -211, 341, -207, 341, -204, -8, -206, -103, -210, -107, -205)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(-30, -530, 64, -530, 63, -296, -26, -297)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(148, -520, 398, -521, 397, -303, 258, -305, 250, -298, 148, -298)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(-29, -620, 34, -620, 42, -627, 103, -625, 111, -635, 111, -629, 118, -624, 174, -623, 175, -741, 111, -742, 106, -737, 105, -702, 33, -701, 33, -741, 27, -747, -29, -747)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(261, -748, 318, -748, 324, -742, 324, -737, 328, -737, 334, -743, 398, -743, 398, -743, 397, -624, 341, -624, 334, -631, 331, -631, 331, -625, 324, -620, 262, -620)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(492, -742, 650, -742, 651, -664, 643, -656, 579, -656, 505, -647, 492, -655)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(491, -544, 499, -551, 561, -552, 582, -531, 582, -477, 574, -468, 492, -469)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(615, -498, 695, -497, 696, -457, 691, -450, 620, -451, 615, -458)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(710, -450, 707, -454, 707, -491, 727, -491, 727, -532, 846, -532, 847, -467, 844, -460, 809, -460, 809, -488, 788, -488, 789, -454, 786, -451)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(863, -451, 859, -455, 859, -492, 886, -495, 868, -495, 857, -506, 857, -530, 861, -534, 899, -534, 901, -499, 897, -495, 898, -491, 898, -451)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(741, -748, 797, -749, 804, -743, 805, -686, 795, -685, 812, -668, 811, -627, 805, -621, 742, -621, 742, -679, 746, -682, 741, -685)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(837, -689, 829, -697, 829, -738, 835, -743, 898, -743, 899, -625, 843, -625, 836, -630)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(756, -371, 794, -371, 798, -368, 799, -330, 803, -325, 803, -297, 799, -293, 755, -294)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(861, -375, 900, -374, 900, -338, 896, -335, 899, -331, 899, -291, 864, -292, 859, -296, 859, -331, 890, -335, 867, -335, 856, -345, 856, -371)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(494, -355, 662, -354, 664, -280, 654, -270, 594, -271, 576, -288, 576, -271, 507, -261, 492, -267)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(489, -132, 667, -132, 667, -214, 657, -225, 584, -216, 586, -207, 567, -210, 562, -215, 499, -215, 490, -207)
+
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(755, -213, 793, -213, 798, -209, 798, -169, 812, -155, 812, -121, 806, -117, 756, -117, 755, -164, 758, -166, 755, -169)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="Buildings Colliders"]
+polygon = PackedVector2Array(820, -161, 855, -161, 855, -170, 908, -170, 908, -121, 904, -115, 825, -116, 820, -122)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ie368")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(46, -67)
