@@ -334,9 +334,9 @@ script = ExtResource("2_cvnsp")
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_7dp3o")
-animation = &"up_right"
+animation = &"right"
 autoplay = "Walking"
-frame_progress = 0.794062
+frame_progress = 0.660964
 
 [node name="Camera2D" type="Camera2D" parent="sprite"]
 zoom = Vector2(4.045, 4.045)
