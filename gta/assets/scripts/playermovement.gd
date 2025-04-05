@@ -15,17 +15,9 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("move_up"):
 		direction.y -= 1
 
-func _ready():
-	visible = true
-	set_physics_process(true)
-
-
-func _physics_process(delta):
-	if is_current_character_active:
-		# Mișcarea player-ului
-		character_direction.x = Input.get_axis("move_left", "move_right")
-		character_direction.y = Input.get_axis("move_up", "move_down")
-		character_direction = character_direction.normalized()
+	direction = direction.normalized()
+	velocity = direction * speed
+	move_and_slide()
 
 	if direction != Vector2.ZERO:
 		# Detectăm direcția exactă
