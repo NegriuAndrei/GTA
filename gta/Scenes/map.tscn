@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://ct21lmssm88h0"]
+[gd_scene load_steps=8 format=4 uid="uid://ct21lmssm88h0"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
 [ext_resource type="PackedScene" uid="uid://cwefumxhne7sj" path="res://Scenes/player.tscn" id="2_26yhd"]
+[ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="5_np2xp"]
 [ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="5_q0mm3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
@@ -83,31 +84,11 @@ tile_set = SubResource("TileSet_e0an3")
 
 [node name="Player" parent="." groups=["PlayerGroup"] instance=ExtResource("2_26yhd")]
 
-[node name="Car" parent="." groups=["Cars"]]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(132, 94)
-script = null
-
-[node name="Car2" parent="." groups=["Cars"]]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-position = Vector2(105, 129)
-script = null
-
 [node name="Car3" parent="." groups=["Cars"] instance=ExtResource("5_q0mm3")]
-position = Vector2(253, 92)
+position = Vector2(265, 105)
+
+[node name="Car" parent="." instance=ExtResource("5_np2xp")]
+position = Vector2(35, 127)
+
+[node name="Car2" parent="." instance=ExtResource("5_q0mm3")]
+position = Vector2(111, 96)
