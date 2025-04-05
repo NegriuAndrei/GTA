@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://yrq1l55u4ha1"]
+[gd_scene load_steps=12 format=3 uid="uid://tkmbhe53qkue"]
 
+[ext_resource type="Script" uid="uid://dho753aw4nxqa" path="res://Scenes/settings.gd" id="1_4geyq"]
+[ext_resource type="Texture2D" uid="uid://b1amcs22s15gb" path="res://assets/Animations/Background.png" id="2_i44u3"]
 [ext_resource type="Shader" uid="uid://ctxcriyslebcf" path="res://assets/shaders/screen_effect.gdshader" id="3_aaqfp"]
 [ext_resource type="Texture2D" uid="uid://c73nfy1vjofx0" path="res://assets/shaders/monitor2.png" id="4_j2dne"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhmql"]
+texture = ExtResource("2_i44u3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aaqfp"]
 
@@ -36,6 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4geyq")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
