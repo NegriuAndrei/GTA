@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://uqdpcjl7yspt"]
+[gd_scene load_steps=25 format=4 uid="uid://uqdpcjl7yspt"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="2_p3ir5"]
 [ext_resource type="Texture2D" uid="uid://c73nfy1vjofx0" path="res://assets/shaders/monitor2.png" id="2_x5dfk"]
 [ext_resource type="Texture2D" uid="uid://3s8ossq0bo5l" path="res://assets/buildings/building1.png" id="3_w7jjh"]
-[ext_resource type="PackedScene" uid="uid://brhletrk2gc20" path="res://Scenes/car2.tscn" id="5_fls3e"]
+[ext_resource type="PackedScene" path="res://Scenes/car2.tscn" id="5_fls3e"]
 [ext_resource type="Texture2D" uid="uid://bgwqb505feo5p" path="res://assets/buildings/building_tall1.png" id="6_6q3n4"]
 [ext_resource type="Texture2D" uid="uid://oiaudmmcwqj4" path="res://assets/buildings/building_tall4.png" id="6_q6lx1"]
 [ext_resource type="Texture2D" uid="uid://n7y45rdcywlf" path="res://assets/buildings/building5.png" id="7_4c2oa"]
@@ -15,9 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://dgmenumc7axtg" path="res://assets/buildings/building_corner1.png" id="11_x5dfk"]
 [ext_resource type="Texture2D" uid="uid://lbf004gk2ll3" path="res://assets/buildings/building_tall3.png" id="12_fls3e"]
 [ext_resource type="Texture2D" uid="uid://cwye7veoqbay2" path="res://assets/buildings/building4.png" id="13_5qtum"]
-[ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="14_ie368"]
-[ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
 [ext_resource type="Shader" uid="uid://ctxcriyslebcf" path="res://assets/shaders/screen_effect.gdshader" id="14_ie368"]
+[ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
+[ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="17_j4oe2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -106,6 +106,7 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 46, -67, 0, 0, 0, 0, 451, -67, 0, 0, 0, 0, 466, -67, 0, 0, 0, 0, 465, -182, 0, 0, 0, 0, 468, -583, 0, 0, 0, 0, -1, -582, 0, 0, 0, 0, -80, -581, 0, 0, 0, 0, -79, -554, 0, 0, 0, 0, 413, -550, 0, 0, 0, 0, 420, -251, 0, 0, 0, 0, 416, -93, 0, 0, 0, 0, 49, -93, 0, 0, 0, 0, 45, -69)
 }
 point_count = 13
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x5dfk"]
 shader = ExtResource("14_ie368")
 
@@ -125,18 +126,19 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAADAAE
 tile_set = SubResource("TileSet_e0an3")
 
 [node name="Player" parent="." groups=["PlayerGroup"] instance=ExtResource("2_26yhd")]
+position = Vector2(459, -59)
 
 [node name="Car" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
 position = Vector2(28, -95)
 
 [node name="Car2" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
-position = Vector2(-23, -69)
+position = Vector2(-34, -92)
 
 [node name="Car3" parent="." instance=ExtResource("5_fls3e")]
-position = Vector2(162, -41)
+position = Vector2(425, -42)
 
 [node name="Car4" parent="." instance=ExtResource("5_fls3e")]
-position = Vector2(214, -87)
+position = Vector2(211, -93)
 
 [node name="Buildings" type="Node" parent="."]
 
@@ -766,14 +768,6 @@ rotation = 1.5708
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("10_ie368")
 
-[node name="Car3" parent="." instance=ExtResource("14_ie368")]
-position = Vector2(46, -66)
-script = ExtResource("15_x5dfk")
-path_speed = 100.0
-steering_rate = 2.0
-max_speed = 400.0
-path_follow_node = NodePath("../Path2D/PathFollow2D")
-
 [node name="Buildings Colliders" type="StaticBody2D" parent="."]
 visible = false
 physics_material_override = SubResource("PhysicsMaterial_ie368")
@@ -841,6 +835,7 @@ curve = SubResource("Curve2D_ie368")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(46, -67)
+
 [node name="MonitorLayer" type="CanvasLayer" parent="."]
 follow_viewport_scale = 0.5
 
@@ -856,3 +851,13 @@ offset_right = 1373.0
 offset_bottom = 851.0
 texture = ExtResource("2_x5dfk")
 stretch_mode = 4
+
+[node name="Police" parent="." instance=ExtResource("17_j4oe2")]
+position = Vector2(48, -64)
+script = ExtResource("15_x5dfk")
+engine_power = 90
+slip_speed = 10
+path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
+path_follow_node = NodePath("../Path2D/PathFollow2D")
