@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bii67q6vieu40"]
+[gd_scene load_steps=5 format=3 uid="uid://cvh33cr104plf"]
 
-[ext_resource type="Script" uid="uid://dl54fo16v4t4r" path="res://assets/scripts/car.gd" id="1_0f027"]
-[ext_resource type="Texture2D" uid="uid://gffxs2abxm5s" path="res://assets/cars/bmw_car.png" id="2_go66d"]
+[ext_resource type="Script" uid="uid://dl54fo16v4t4r" path="res://assets/scripts/car.gd" id="1_ra8pt"]
+[ext_resource type="Texture2D" uid="uid://bfvpj66e5dy02" path="res://assets/cars/ferrari.png" id="2_ra8pt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyfs4"]
 size = Vector2(397, 213)
@@ -12,17 +12,19 @@ radius = 311.223
 [node name="Car" type="CharacterBody2D"]
 position = Vector2(2, 0)
 scale = Vector2(0.055, 0.055)
-script = ExtResource("1_0f027")
+script = ExtResource("1_ra8pt")
+steering_angle = 12
 engine_power = 500
 friction = -100
 drag = 0.05
-braking = -2000
-max_speed_reverse = 20
-slip_speed = 50
+braking = -1500
+max_speed_reverse = 30
+slip_speed = 0
+traction_fast = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
-texture = ExtResource("2_go66d")
+texture = ExtResource("2_ra8pt")
 
 [node name="Camera2D" type="Camera2D" parent="Sprite2D"]
 rotation = -1.5708

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://ct21lmssm88h0"]
+[gd_scene load_steps=28 format=4 uid="uid://ct21lmssm88h0"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -6,19 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="2_p3ir5"]
 [ext_resource type="Texture2D" uid="uid://c73nfy1vjofx0" path="res://assets/shaders/monitor2.png" id="2_x5dfk"]
 [ext_resource type="Texture2D" uid="uid://3s8ossq0bo5l" path="res://assets/buildings/building1.png" id="3_w7jjh"]
-[ext_resource type="PackedScene" path="res://Scenes/car2.tscn" id="5_fls3e"]
+[ext_resource type="PackedScene" uid="uid://brhletrk2gc20" path="res://Scenes/car2.tscn" id="5_fls3e"]
 [ext_resource type="PackedScene" uid="uid://b2xe8oler1cp1" path="res://Scenes/pause_menu.tscn" id="5_np2xp"]
 [ext_resource type="Texture2D" uid="uid://bgwqb505feo5p" path="res://assets/buildings/building_tall1.png" id="6_6q3n4"]
 [ext_resource type="Texture2D" uid="uid://oiaudmmcwqj4" path="res://assets/buildings/building_tall4.png" id="6_q6lx1"]
 [ext_resource type="Texture2D" uid="uid://n7y45rdcywlf" path="res://assets/buildings/building5.png" id="7_4c2oa"]
+[ext_resource type="PackedScene" uid="uid://dsevye8enx8kr" path="res://Scenes/car4.tscn" id="8_rg57b"]
 [ext_resource type="Texture2D" uid="uid://p8kyl4ywtqng" path="res://assets/buildings/building_corner2.png" id="9_5qtum"]
 [ext_resource type="Texture2D" uid="uid://d3ohh76h27knc" path="res://assets/buildings/building3.png" id="10_ie368"]
 [ext_resource type="Texture2D" uid="uid://dgmenumc7axtg" path="res://assets/buildings/building_corner1.png" id="11_x5dfk"]
 [ext_resource type="Texture2D" uid="uid://lbf004gk2ll3" path="res://assets/buildings/building_tall3.png" id="12_fls3e"]
 [ext_resource type="Texture2D" uid="uid://cwye7veoqbay2" path="res://assets/buildings/building4.png" id="13_5qtum"]
 [ext_resource type="Shader" uid="uid://ctxcriyslebcf" path="res://assets/shaders/screen_effect.gdshader" id="14_ie368"]
-[ext_resource type="Script" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
+[ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
 [ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="17_j4oe2"]
+[ext_resource type="PackedScene" uid="uid://cvh33cr104plf" path="res://Scenes/car3.tscn" id="19_vtkp8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -137,13 +139,18 @@ position = Vector2(253, 92)
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_np2xp")]
 
 [node name="Car" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
-position = Vector2(28, -95)
+position = Vector2(576, -115)
+engine_power = 600
+friction = 1
+traction_slow = 2
 
 [node name="Car2" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
 position = Vector2(-34, -92)
 
 [node name="Car4" parent="." instance=ExtResource("5_fls3e")]
 position = Vector2(425, -42)
+
+[node name="Car9" parent="." instance=ExtResource("8_rg57b")]
 
 [node name="Car5" parent="." instance=ExtResource("5_fls3e")]
 position = Vector2(211, -93)
@@ -859,6 +866,18 @@ offset_right = 1373.0
 offset_bottom = 851.0
 texture = ExtResource("2_x5dfk")
 stretch_mode = 4
+
+[node name="Car6" parent="." instance=ExtResource("19_vtkp8")]
+position = Vector2(270, -216)
+rotation = 0.253073
+
+[node name="Car7" parent="." instance=ExtResource("19_vtkp8")]
+position = Vector2(829, -331)
+rotation = -0.760964
+
+[node name="Car8" parent="." instance=ExtResource("19_vtkp8")]
+position = Vector2(590, -610)
+rotation = 0.380482
 
 [node name="Police" parent="." instance=ExtResource("17_j4oe2")]
 position = Vector2(48, -64)
