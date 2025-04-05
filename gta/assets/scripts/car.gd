@@ -14,7 +14,28 @@ var wheel_base = 65
 var acceleration = Vector2.ZERO
 var steer_direction
 
+
+signal entered_by_player(car)
 @export var is_current_character_active: bool = false  # <- Asta controlează dacă personajul e controlat
+
+
+@onready var entry_area = $Area2D
+
+func _ready():
+	entry_area.body_entered.connect(_on_entry_area_body_entered)
+
+func _on_entry_area_body_entered(body):
+	if body.is_in_group("PlayerGroup"):  # Asigură-te că Player e în grupul "Player"
+		# Dezactivează playerul
+		emit_signal("entered_by_player", self)
+		body.is_current_character_active = false
+		body.visible = false
+		body.set_physics_process(false)
+
+		# Activează mașina
+		is_current_character_active = true
+
+
 
 func _physics_process(delta: float) -> void:
 	if is_current_character_active:

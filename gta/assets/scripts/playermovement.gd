@@ -8,6 +8,11 @@ var character_direction : Vector2
 
 var is_current_character_active = true  # Acesta va fi controlat din scriptul de pe Map
 
+func _ready():
+	visible = true
+	set_physics_process(true)
+
+
 func _physics_process(delta):
 	if is_current_character_active:
 		# Mișcarea player-ului
