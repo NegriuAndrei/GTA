@@ -87,4 +87,4 @@ tile_set = SubResource("TileSet_e0an3")
 position = Vector2(132, 94)
 
 [node name="Car2" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
-position = Vector2(173, 41)
+position = Vector2(62, 28)
