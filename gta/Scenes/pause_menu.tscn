@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2xe8oler1cp1"]
+[gd_scene load_steps=15 format=3 uid="uid://b2xe8oler1cp1"]
 
 [ext_resource type="Shader" uid="uid://1fa464c08btj" path="res://Scenes/pause_menu.gdshader" id="1_emv3i"]
 [ext_resource type="Script" uid="uid://1jerooqgqv5n" path="res://Scenes/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="Shader" uid="uid://ctxcriyslebcf" path="res://assets/shaders/screen_effect.gdshader" id="3_bpi0q"]
+[ext_resource type="Texture2D" uid="uid://c73nfy1vjofx0" path="res://assets/shaders/monitor2.png" id="4_vmyb1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0w1u"]
 shader = ExtResource("1_emv3i")
@@ -84,6 +86,13 @@ _data = {
 &"RESET": SubResource("Animation_bpi0q"),
 &"blur": SubResource("Animation_1och7")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_myy0f"]
+shader = ExtResource("3_bpi0q")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sjs17"]
+size = Vector2(1152, 864)
+center_offset = Vector3(576, 432, 0)
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -175,6 +184,22 @@ text = "Exit"
 libraries = {
 &"": SubResource("AnimationLibrary_vmyb1")
 }
+
+[node name="MonitorLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 0.5
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="MonitorLayer"]
+material = SubResource("ShaderMaterial_myy0f")
+mesh = SubResource("QuadMesh_sjs17")
+
+[node name="OldMonitor" type="TextureRect" parent="MonitorLayer"]
+visible = false
+offset_left = -53.0
+offset_top = -54.0
+offset_right = 1373.0
+offset_bottom = 851.0
+texture = ExtResource("4_vmyb1")
+stretch_mode = 4
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer2/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer2/Restart" to="." method="_on_restart_pressed"]

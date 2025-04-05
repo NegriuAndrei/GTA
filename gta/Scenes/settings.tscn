@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://tkmbhe53qkue"]
+[gd_scene load_steps=12 format=3 uid="uid://tkmbhe53qkue"]
 
 [ext_resource type="Script" uid="uid://dho753aw4nxqa" path="res://Scenes/settings.gd" id="1_4geyq"]
 [ext_resource type="Texture2D" uid="uid://b1amcs22s15gb" path="res://assets/Animations/Background.png" id="2_i44u3"]
+[ext_resource type="Shader" uid="uid://ctxcriyslebcf" path="res://assets/shaders/screen_effect.gdshader" id="3_aaqfp"]
+[ext_resource type="Texture2D" uid="uid://c73nfy1vjofx0" path="res://assets/shaders/monitor2.png" id="4_j2dne"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhmql"]
 texture = ExtResource("2_i44u3")
@@ -22,6 +24,13 @@ corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3.41)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6kysc"]
+shader = ExtResource("3_aaqfp")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6vr2p"]
+size = Vector2(1152, 864)
+center_offset = Vector3(576, 432, 0)
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -99,6 +108,22 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_6vr2p")
 text = "Back To Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MonitorLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 0.5
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="MonitorLayer"]
+material = SubResource("ShaderMaterial_6kysc")
+mesh = SubResource("QuadMesh_6vr2p")
+
+[node name="OldMonitor" type="TextureRect" parent="MonitorLayer"]
+visible = false
+offset_left = -53.0
+offset_top = -54.0
+offset_right = 1373.0
+offset_bottom = 851.0
+texture = ExtResource("4_j2dne")
+stretch_mode = 4
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/volume" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_mute_toggled"]
