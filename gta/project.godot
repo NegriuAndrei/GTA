@@ -11,10 +11,15 @@ config_version=5
 [application]
 
 config/name="GTA"
-run/main_scene="uid://ct21lmssm88h0"
+run/main_scene="uid://uqdpcjl7yspt"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 <<<<<<<Updatedupstreamrun/main_scene="uid://uqdpcjl7yspt"
+
+[display]
+
+window/size/viewport_height=864
+window/stretch/mode="viewport"
 
 [input]
 
