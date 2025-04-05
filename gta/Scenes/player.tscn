@@ -463,7 +463,7 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_7dp3o")
 animation = &"up_right"
 autoplay = "Walking"
-frame_progress = 0.0125011
+frame_progress = 0.949995
 
 [node name="Area2D" type="Area2D" parent="sprite"]
 

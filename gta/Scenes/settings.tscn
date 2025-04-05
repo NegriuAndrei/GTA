@@ -66,6 +66,7 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -92,15 +93,19 @@ popup/item_1/id = 1
 popup/item_2/text = "1280x720"
 popup/item_2/id = 2
 
-[node name="back_menu" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="back_menu" type="Button" parent="."]
 layout_mode = 2
+offset_left = 267.0
+offset_top = 597.0
+offset_right = 867.0
+offset_bottom = 719.0
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_constants/h_separation = 0
-theme_override_font_sizes/font_size = 95
+theme_override_font_sizes/font_size = 70
 theme_override_styles/focus = SubResource("StyleBoxEmpty_aaqfp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_j2dne")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6kysc")
@@ -110,6 +115,7 @@ text = "Back To Menu"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="MonitorLayer" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_scale = 0.5
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="MonitorLayer"]
@@ -128,4 +134,4 @@ stretch_mode = 4
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/volume" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/CheckBox" to="." method="_on_mute_toggled"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/Resolution" to="." method="_on_resolution_item_selected"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/back_menu" to="." method="_on_back_menu_pressed"]
+[connection signal="pressed" from="back_menu" to="." method="_on_back_menu_pressed"]
