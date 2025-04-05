@@ -67,8 +67,12 @@ animation = &"Walking"
 autoplay = "Walking"
 frame_progress = 0.415231
 
+[node name="Area2D" type="Area2D" parent="sprite"]
+
 [node name="Camera2D" type="Camera2D" parent="sprite"]
-zoom = Vector2(4.045, 4.045)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)

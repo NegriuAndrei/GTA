@@ -90,5 +90,5 @@ position = Vector2(132, 94)
 [node name="Car2" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
 position = Vector2(105, 129)
 
-[node name="Car3" parent="." instance=ExtResource("5_q0mm3")]
+[node name="Car3" parent="." groups=["Cars"] instance=ExtResource("5_q0mm3")]
 position = Vector2(253, 92)
