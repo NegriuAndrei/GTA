@@ -50,12 +50,15 @@ direction_change_interval = 2.0
 position = Vector2(431, -887)
 rotation = 1.5708
 script = ExtResource("6_gpp1u")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+friction = -55
+drag = -0.06
+braking = -450
+max_speed_reverse = 250
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="NPC_Car1"]
@@ -69,12 +72,11 @@ rotation = 0.00233104
 [node name="Police" parent="." instance=ExtResource("7_ivwbc")]
 position = Vector2(51, -67)
 script = ExtResource("6_gpp1u")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="Police"]
@@ -90,12 +92,11 @@ position = Vector2(46, -67)
 [node name="Police2" parent="." instance=ExtResource("7_ivwbc")]
 position = Vector2(514, -59)
 script = ExtResource("6_gpp1u")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="Police2"]
@@ -109,12 +110,11 @@ rotation = -0.0137922
 [node name="Police3" parent="." instance=ExtResource("7_ivwbc")]
 position = Vector2(-88, -778)
 script = ExtResource("6_gpp1u")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="Police3"]
@@ -129,12 +129,11 @@ rotation = -0.00207688
 [node name="Police4" parent="." instance=ExtResource("7_ivwbc")]
 position = Vector2(305, -551)
 script = ExtResource("6_gpp1u")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="Police4"]
@@ -149,12 +148,11 @@ rotation = 0.0135126
 [node name="Police5" parent="." instance=ExtResource("7_ivwbc")]
 position = Vector2(808, -556)
 script = ExtResource("6_gpp1u")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="Police5"]
@@ -169,12 +167,11 @@ rotation = 0.0135126
 [node name="Police6" parent="." instance=ExtResource("7_ivwbc")]
 position = Vector2(790, -234)
 script = ExtResource("6_gpp1u")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="Police6"]

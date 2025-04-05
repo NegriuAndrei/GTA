@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://ct21lmssm88h0"]
+[gd_scene load_steps=32 format=4 uid="uid://ct21lmssm88h0"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -21,9 +21,9 @@
 [ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
 [ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="17_j4oe2"]
 [ext_resource type="PackedScene" uid="uid://cvh33cr104plf" path="res://Scenes/car3.tscn" id="19_vtkp8"]
-[ext_resource type="PackedScene" uid="uid://c0gco60wnwjry" path="res://Scenes/police&npcs.tscn" id="22_macow"]
 [ext_resource type="Script" uid="uid://ruqft64a85d1" path="res://Scenes/minimap.gd" id="22_ltf6m"]
 [ext_resource type="Texture2D" uid="uid://bn400qxevdqn8" path="res://assets/cars/minimap.png" id="22_macow"]
+[ext_resource type="PackedScene" uid="uid://c0gco60wnwjry" path="res://Scenes/police&npcs.tscn" id="22_tuwt4"]
 [ext_resource type="Texture2D" uid="uid://b7e06ms4x6747" path="res://assets/cars/arrrow.png" id="24_uus22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
@@ -888,16 +888,15 @@ rotation = 0.380482
 [node name="Police" parent="." instance=ExtResource("17_j4oe2")]
 position = Vector2(48, -64)
 script = ExtResource("15_x5dfk")
-max_speed = 400.0
-acceleration_rate = 800.0
-braking_rate = 1000.0
-steering_rate = 2.0
-drift_damping = 5.0
+engine_power = 900
+slip_speed = 400
 path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
 path_follow_node = NodePath("../Path2D/PathFollow2D")
 
-[node name="Police & Player NPCs" parent="." instance=ExtResource("22_macow")]
-position = Vector2(1, 1)
+[node name="Police & Player NPCs2" parent="." instance=ExtResource("22_tuwt4")]
+
 [node name="Minimap" type="CanvasLayer" parent="."]
 visible = false
 
