@@ -65,7 +65,7 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_7dp3o")
 animation = &"Walking"
 autoplay = "Walking"
-frame_progress = 0.415231
+frame_progress = 0.902731
 
 [node name="Camera2D" type="Camera2D" parent="sprite"]
 zoom = Vector2(4.045, 4.045)
