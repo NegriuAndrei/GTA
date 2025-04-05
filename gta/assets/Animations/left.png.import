@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvugi22vif10o"
-path="res://.godot/imported/Businessman_Walk_dir6.png-d86754c3318ab2b86b958fe0d92820c3.ctex"
+uid="uid://bfjkjh8qbrby4"
+path="res://.godot/imported/left.png-a8e34d1335d45d1ec63e3a399ef90a23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Animations/Businessman_Walk_dir6.png"
-dest_files=["res://.godot/imported/Businessman_Walk_dir6.png-d86754c3318ab2b86b958fe0d92820c3.ctex"]
+source_file="res://assets/Animations/left.png"
+dest_files=["res://.godot/imported/left.png-a8e34d1335d45d1ec63e3a399ef90a23.ctex"]
 
 [params]
 
