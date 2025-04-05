@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://disdtcwac8x0h"
-path="res://.godot/imported/Blue_SPORT_CLEAN_EAST_000-sheet.png-d86ea25333cea17b373f18c3d858f357.ctex"
+uid="uid://yio4kmt130ir"
+path="res://.godot/imported/lambo2.png-d51e4ce29f442bb765dee7dc88ae4bb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cars/fromWeb/Blue_SPORT_CLEAN_EAST_000-sheet.png"
-dest_files=["res://.godot/imported/Blue_SPORT_CLEAN_EAST_000-sheet.png-d86ea25333cea17b373f18c3d858f357.ctex"]
+source_file="res://assets/cars/lambo2.png"
+dest_files=["res://.godot/imported/lambo2.png-d51e4ce29f442bb765dee7dc88ae4bb5.ctex"]
 
 [params]
 
