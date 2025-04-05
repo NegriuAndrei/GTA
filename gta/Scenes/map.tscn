@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://uqdpcjl7yspt"]
+[gd_scene load_steps=26 format=4 uid="uid://ct21lmssm88h0"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://duug733d5rxds" path="res://Scenes/human_npc.tscn" id="4_riaky"]
 [ext_resource type="PackedScene" path="res://Scenes/car2.tscn" id="5_fls3e"]
 [ext_resource type="Script" uid="uid://bwjso7jrem4n7" path="res://assets/scripts/npc_movement.gd" id="5_vtkp8"]
+[ext_resource type="PackedScene" uid="uid://b2xe8oler1cp1" path="res://Scenes/pause_menu.tscn" id="5_np2xp"]
 [ext_resource type="Texture2D" uid="uid://bgwqb505feo5p" path="res://assets/buildings/building_tall1.png" id="6_6q3n4"]
 [ext_resource type="Texture2D" uid="uid://oiaudmmcwqj4" path="res://assets/buildings/building_tall4.png" id="6_q6lx1"]
 [ext_resource type="Texture2D" uid="uid://n7y45rdcywlf" path="res://assets/buildings/building5.png" id="7_4c2oa"]
@@ -18,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://lbf004gk2ll3" path="res://assets/buildings/building_tall3.png" id="12_fls3e"]
 [ext_resource type="Texture2D" uid="uid://cwye7veoqbay2" path="res://assets/buildings/building4.png" id="13_5qtum"]
 [ext_resource type="Shader" uid="uid://ctxcriyslebcf" path="res://assets/shaders/screen_effect.gdshader" id="14_ie368"]
-[ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
+[ext_resource type="Script" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
 [ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="17_j4oe2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
@@ -159,6 +160,15 @@ position = Vector2(460, -814)
 script = ExtResource("5_vtkp8")
 speed = 40.0
 direction_change_interval = 2.0
+[node name="Car3" parent="." instance=ExtResource("17_j4oe2")]
+position = Vector2(253, 92)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_np2xp")]
+
+[node name="Car" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
+position = Vector2(28, -95)
 
 [node name="EmptyCar1" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
 position = Vector2(210, -54)
@@ -190,6 +200,10 @@ rotation = 0.00233104
 position = Vector2(425, -42)
 
 [node name="Lambo1" parent="." instance=ExtResource("5_fls3e")]
+[node name="Car4" parent="." instance=ExtResource("5_fls3e")]
+position = Vector2(425, -42)
+
+[node name="Car5" parent="." instance=ExtResource("5_fls3e")]
 position = Vector2(211, -93)
 
 [node name="Lambo3" parent="." instance=ExtResource("5_fls3e")]
