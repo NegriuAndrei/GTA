@@ -82,11 +82,11 @@ func enter_vehicle(player):
 	print("Player entered vehicle")
 
 func exit_vehicle(player):
-	print("asadada")
-	camera.enabled = false
-	player.activate_camera();
+	player.position = position + Vector2(0, -20) 
 	# Dezactivează mașina
 	is_current_character_active = false  # Dezactivează vehiculul
+	player.activate_camera();
+	camera.enabled = false
 
 	# Activează player-ul în mod sigur
 	player.is_current_character_active = true  # Activează playerul
@@ -95,17 +95,10 @@ func exit_vehicle(player):
 	var player_collision = player.get_node("Collision")  # Presupun că numele nodului de coliziune este "Collision"
 	player_collision.set_deferred("disabled", false)
 	# Repoziționează playerul lângă mașină
-	player.position = position + Vector2(0, -50)  # Ajustează această valoare în funcție de poziția dorită
-
 	# Activează indicatorul pentru că jucătorul a ieșit din vehicul
 	is_in_vehicle = false
-
-	# Păstrează direcția și viteza vehiculului
-	# Asigură-te că direcția este corectă
-
-	# O dată ce am făcut exit, jucătorul poate interacționa din nou cu vehiculul
 	player_in_area = null
-	print("Player exited vehicle")
+	
 
 
 

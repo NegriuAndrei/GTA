@@ -17,8 +17,10 @@ steering_angle = 12
 engine_power = 600
 friction = -100
 drag = 0.05
-max_speed_reverse = 20
-slip_speed = 30
+braking = -2000
+max_speed_reverse = 30
+slip_speed = 0
+traction_fast = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

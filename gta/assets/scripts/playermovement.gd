@@ -13,6 +13,7 @@ var is_current_character_active = true
 func _ready():
 	visible = true
 	set_physics_process(true)
+	print(camera.position)
 
 func _physics_process(delta):
 	if is_current_character_active:
@@ -59,3 +60,5 @@ func deactivate_camera():
 
 func activate_camera():
 	camera.enabled = true
+	camera.global_position = global_position
+	
