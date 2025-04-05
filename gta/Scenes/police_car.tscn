@@ -20,6 +20,12 @@ slip_speed = 35
 rotation = 1.5708
 texture = ExtResource("2_a11c2")
 
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+enabled = false
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-14.5, -0.5)
 shape = SubResource("RectangleShape2D_gyfs4")
@@ -28,5 +34,3 @@ shape = SubResource("RectangleShape2D_gyfs4")
 
 [node name="enter_car" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_uoj53")
-
-[node name="Camera2D" type="Camera2D" parent="."]
