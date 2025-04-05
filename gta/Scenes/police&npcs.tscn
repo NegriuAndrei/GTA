@@ -1,0 +1,187 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0gco60wnwjry"]
+
+[ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_xxutd"]
+[ext_resource type="PackedScene" uid="uid://cj3ubu5754jbg" path="res://Scenes/human_npc.tscn" id="3_33akn"]
+[ext_resource type="Script" path="res://assets/scripts/npc_movement.gd" id="4_4qcpk"]
+[ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="5_68ihd"]
+[ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="6_gpp1u"]
+[ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="7_ivwbc"]
+
+[sub_resource type="Curve2D" id="Curve2D_j4oe2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 54.5449, 0, 0, 0, 0, 0, 7854.54, 18.1821, 0, 0, 0, 0, 8963.64, -1600, 0, 0, 0, 0, 8781.82, -8236.36, 0, 0, 0, 0, 7963.64, -9363.64, 0, 0, 0, 0, 6854.54, -9309.09, 0, 0, 0, 0, 5327.27, -7690.91, 0, 0, 0, 0, 5345.45, -5927.27, 0, 0, 0, 0, 4272.73, -4927.27, 0, 0, 0, 0, 2854.54, -4927.27, 0, 0, 0, 0, 1236.36, -3090.91, 0, 0, 0, 0, 1218.18, -1254.54, 0, 0, 0, 0, 90.9092, -727.272, 0, 0, 0, 0, 72.7275, -18.1816, 0, 0, 0, 0, 54.5449, 0)
+}
+point_count = 15
+
+[sub_resource type="Curve2D" id="Curve2D_ie368"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 46, -67, 0, 0, 0, 0, 451, -67, 0, 0, 0, 0, 466, -67, 0, 0, 0, 0, 465, -182, 0, 0, 0, 0, 468, -583, 0, 0, 0, 0, -1, -582, 0, 0, 0, 0, -80, -581, 0, 0, 0, 0, -79, -554, 0, 0, 0, 0, 413, -550, 0, 0, 0, 0, 420, -251, 0, 0, 0, 0, 416, -93, 0, 0, 0, 0, 49, -93, 0, 0, 0, 0, 45, -69, 0, 0, 0, 0, 46, -67)
+}
+point_count = 14
+
+[sub_resource type="Curve2D" id="Curve2D_riaky"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 127.273, 0, 0, 0, 0, 0, 2763.64, -36.3636, 0, 0, 0, 0, 4072.73, -2418.18, 0, 0, 0, 0, 3800, -4363.64, 0, 0, 0, 0, 3836.36, -6145.45, 0, 0, 0, 0, 7981.82, -6145.45, 0, 0, 0, 0, 7945.45, -8963.64, 0, 0, 0, 0, 3672.73, -9763.64, 0, 0, 0, 0, 3381.82, -13290.9, 0, 0, 0, 0, -3272.73, -13290.9, 0, 0, 0, 0, -7781.82, -13290.9, 0, 0, 0, 0, -10254.5, -13454.5, 0, 0, 0, 0, -10818.2, -11218.2, 0, 0, 0, 0, -11054.5, -4327.27, 0, 0, 0, 0, -8490.91, -3400, 0, 0, 0, 0, -4127.27, -3181.82, 0, 0, 0, 0, -1345.45, -3072.73, 0, 0, 0, 0, -1581.82, -309.091, 0, 0, 0, 0, 127.273, 0)
+}
+point_count = 19
+
+[sub_resource type="Curve2D" id="Curve2D_vtkp8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 163.636, 0, 0, 0, 0, 0, 17672.7, -36.3643, 0, 0, 0, 0, 18436.4, 836.363, 0, 0, 0, 0, 18400, 5981.82, 0, 0, 0, 0, 17200, 6618.18, 0, 0, 0, 0, 10963.6, 6454.54, 0, 0, 0, 0, 9272.73, 7545.45, 0, 0, 0, 0, 9272.73, 11563.6, 0, 0, 0, 0, 11581.8, 13127.3, 0, 0, 0, 0, 14509.1, 12945.5, 0, 0, 0, 0, 14563.6, 10054.5, 0, 0, 0, 0, 17945.5, 9854.54, 0, 0, 0, 0, 18981.8, 7963.64, 0, 0, 0, 0, 18763.6, 3872.73, 0, 0, 0, 0, 15181.8, 3472.73, 0, 0, 0, 0, 14545.5, 436.363, 0, 0, 0, 0, 12727.3, -545.455, 0, 0, 0, 0, 1890.91, -381.818, 0, 0, 0, 0, 163.636, 0)
+}
+point_count = 19
+
+[sub_resource type="Curve2D" id="Curve2D_rg57b"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, -0.000976563, 0, 0, 0, 0, 1545.45, 18.1807, 0, 0, 0, 0, 2727.27, -872.729, 0, 0, 0, 0, 2654.55, -3418.18, 0, 0, 0, 0, 1418.18, -4763.64, 0, 0, 0, 0, -563.636, -4763.64, 0, 0, 0, 0, -1945.45, -3600, 0, 0, 0, 0, -1945.45, -1218.18, 0, 0, 0, 0, 200, -0.000976563)
+}
+point_count = 9
+
+[node name="Police & Player NPCs" type="Node2D"]
+script = ExtResource("1_xxutd")
+
+[node name="Player2" parent="." instance=ExtResource("3_33akn")]
+position = Vector2(460, -814)
+script = ExtResource("4_4qcpk")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC_Car1" parent="." groups=["Cars"] instance=ExtResource("5_68ihd")]
+position = Vector2(431, -887)
+rotation = 1.5708
+script = ExtResource("6_gpp1u")
+max_speed = 400.0
+acceleration_rate = 800.0
+braking_rate = 1000.0
+steering_rate = 2.0
+drift_damping = 5.0
+path_speed = 100.0
+path_follow_node = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="NPC_Car1"]
+curve = SubResource("Curve2D_j4oe2")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="NPC_Car1/Path2D"]
+visible = false
+position = Vector2(54.5449, 0)
+rotation = 0.00233104
+
+[node name="Police" parent="." instance=ExtResource("7_ivwbc")]
+position = Vector2(51, -67)
+script = ExtResource("6_gpp1u")
+max_speed = 400.0
+acceleration_rate = 800.0
+braking_rate = 1000.0
+steering_rate = 2.0
+drift_damping = 5.0
+path_speed = 100.0
+path_follow_node = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Police"]
+visible = false
+position = Vector2(-927.273, 1218.18)
+scale = Vector2(18.1818, 18.1818)
+curve = SubResource("Curve2D_ie368")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Police/Path2D"]
+visible = false
+position = Vector2(46, -67)
+
+[node name="Police2" parent="." instance=ExtResource("7_ivwbc")]
+position = Vector2(514, -59)
+script = ExtResource("6_gpp1u")
+max_speed = 400.0
+acceleration_rate = 800.0
+braking_rate = 1000.0
+steering_rate = 2.0
+drift_damping = 5.0
+path_speed = 100.0
+path_follow_node = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Police2"]
+curve = SubResource("Curve2D_riaky")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Police2/Path2D"]
+visible = false
+position = Vector2(127.273, 0)
+rotation = -0.0137922
+
+[node name="Police3" parent="." instance=ExtResource("7_ivwbc")]
+position = Vector2(-88, -778)
+script = ExtResource("6_gpp1u")
+max_speed = 400.0
+acceleration_rate = 800.0
+braking_rate = 1000.0
+steering_rate = 2.0
+drift_damping = 5.0
+path_speed = 100.0
+path_follow_node = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Police3"]
+visible = false
+curve = SubResource("Curve2D_vtkp8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Police3/Path2D"]
+visible = false
+position = Vector2(163.636, 0)
+rotation = -0.00207688
+
+[node name="Police4" parent="." instance=ExtResource("7_ivwbc")]
+position = Vector2(305, -551)
+script = ExtResource("6_gpp1u")
+max_speed = 400.0
+acceleration_rate = 800.0
+braking_rate = 1000.0
+steering_rate = 2.0
+drift_damping = 5.0
+path_speed = 100.0
+path_follow_node = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Police4"]
+visible = false
+curve = SubResource("Curve2D_rg57b")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Police4/Path2D"]
+visible = false
+position = Vector2(200, -0.000976563)
+rotation = 0.0135126
+
+[node name="Police5" parent="." instance=ExtResource("7_ivwbc")]
+position = Vector2(808, -556)
+script = ExtResource("6_gpp1u")
+max_speed = 400.0
+acceleration_rate = 800.0
+braking_rate = 1000.0
+steering_rate = 2.0
+drift_damping = 5.0
+path_speed = 100.0
+path_follow_node = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Police5"]
+visible = false
+curve = SubResource("Curve2D_rg57b")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Police5/Path2D"]
+visible = false
+position = Vector2(200, -0.000976563)
+rotation = 0.0135126
+
+[node name="Police6" parent="." instance=ExtResource("7_ivwbc")]
+position = Vector2(790, -234)
+script = ExtResource("6_gpp1u")
+max_speed = 400.0
+acceleration_rate = 800.0
+braking_rate = 1000.0
+steering_rate = 2.0
+drift_damping = 5.0
+path_speed = 100.0
+path_follow_node = NodePath("Path2D/PathFollow2D")
+
+[node name="Path2D" type="Path2D" parent="Police6"]
+visible = false
+curve = SubResource("Curve2D_rg57b")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Police6/Path2D"]
+visible = false
+position = Vector2(200, -0.000976563)
+rotation = 0.0135126
