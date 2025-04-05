@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://uqdpcjl7yspt"]
+[gd_scene load_steps=8 format=4 uid="uid://uqdpcjl7yspt"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
 [ext_resource type="PackedScene" uid="uid://cwefumxhne7sj" path="res://Scenes/player.tscn" id="2_26yhd"]
 [ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="2_p3ir5"]
+[ext_resource type="PackedScene" uid="uid://dbf0qqts4b6y1" path="res://Scenes/police_car.tscn" id="5_q0mm3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -87,4 +88,7 @@ tile_set = SubResource("TileSet_e0an3")
 position = Vector2(132, 94)
 
 [node name="Car2" parent="." groups=["Cars"] instance=ExtResource("2_p3ir5")]
-position = Vector2(62, 28)
+position = Vector2(105, 129)
+
+[node name="Car3" parent="." instance=ExtResource("5_q0mm3")]
+position = Vector2(253, 92)
