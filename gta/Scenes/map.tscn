@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="17_j4oe2"]
 [ext_resource type="PackedScene" uid="uid://cvh33cr104plf" path="res://Scenes/car3.tscn" id="19_vtkp8"]
 [ext_resource type="PackedScene" uid="uid://c0gco60wnwjry" path="res://Scenes/police&npcs.tscn" id="22_macow"]
+[ext_resource type="Script" uid="uid://ruqft64a85d1" path="res://Scenes/minimap.gd" id="22_ltf6m"]
+[ext_resource type="Texture2D" uid="uid://bn400qxevdqn8" path="res://assets/cars/minimap.png" id="22_macow"]
+[ext_resource type="Texture2D" uid="uid://b7e06ms4x6747" path="res://assets/cars/arrrow.png" id="24_uus22"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -895,3 +898,30 @@ path_follow_node = NodePath("../Path2D/PathFollow2D")
 
 [node name="Police & Player NPCs" parent="." instance=ExtResource("22_macow")]
 position = Vector2(1, 1)
+[node name="Minimap" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Minimap"]
+offset_left = 902.0
+offset_top = 616.0
+offset_right = 1202.0
+offset_bottom = 916.0
+
+[node name="SubViewport" type="SubViewport" parent="Minimap/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(300, 300)
+render_target_update_mode = 0
+script = ExtResource("22_ltf6m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Minimap/SubViewportContainer/SubViewport"]
+position = Vector2(427.76, -493)
+scale = Vector2(1.6988, 1.87847)
+texture = ExtResource("22_macow")
+
+[node name="MinimapCamera" type="Camera2D" parent="Minimap/SubViewportContainer/SubViewport"]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Minimap/SubViewportContainer"]
+position = Vector2(150, 150)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("24_uus22")
