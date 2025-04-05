@@ -12,43 +12,118 @@ extends CharacterBody2D
 
 var wheel_base = 65
 var acceleration = Vector2.ZERO
-var steer_direction
-
+var steer_direction = 0.0
 
 signal entered_by_player(car)
-@export var is_current_character_active: bool = false  # <- Asta controlează dacă personajul e controlat
-
+@export var is_current_character_active: bool = false
+@onready var camera=$Sprite2D/Camera2D
 
 @onready var entry_area = $Area2D
+var player_in_area = null  # Referință la player, dacă e în apropiere
+var is_in_vehicle = false  # Verifică dacă playerul este în mașină
 
 func _ready():
+	#camera.enabled = false
+	
+	
+		
 	entry_area.body_entered.connect(_on_entry_area_body_entered)
+	entry_area.body_exited.connect(_on_entry_area_body_exited)
 
 func _on_entry_area_body_entered(body):
-	if body.is_in_group("PlayerGroup"):  # Asigură-te că Player e în grupul "Player"
-		# Dezactivează playerul
-		emit_signal("entered_by_player", self)
-		body.is_current_character_active = false
-		body.visible = false
-		body.set_physics_process(false)
+	if body.is_in_group("PlayerGroup"):
+		player_in_area = body  # Salvează referința la player, dar nu face switch încă
+		#print("Player entered area: ", player_in_area)
 
-		# Activează mașina
-		is_current_character_active = true
+func _on_entry_area_body_exited(body):
+	if body == player_in_area and !is_in_vehicle:
+		player_in_area = null
+		print("am iesit")  # Dacă playerul a ieșit din aria mașinii
+		#print("Player exited area")
+
+func _process(delta):
+	#if player_in_area:
+		#print("Player collision active: ", !player_in_area.get_node("Collision").is_disabled())
+	if Input.is_action_just_pressed("Ui_accept") and is_in_vehicle:
+		exit_vehicle(player_in_area)
+
+	# Verifică dacă playerul e în apropiere și apasă tasta E
+	if player_in_area and Input.is_action_just_pressed("Ui_accept"):
+		if not is_in_vehicle:
+			enter_vehicle(player_in_area)
+
+
+var last_velocity = Vector2.ZERO  # Variabilă pentru a salva viteza vehiculului
+var last_direction = Vector2.ZERO  # Variabilă pentru a salva direcția vehiculului
+
+func enter_vehicle(player):
+	emit_signal("entered_by_player", self)
+	camera.enabled = true
+	player.deactivate_camera();
+	# Dezactivează player-ul în mod sigur (call_deferred)
+	player.call_deferred("set", "is_current_character_active", false)
+	player.call_deferred("set", "visible", false)
+	player.call_deferred("set_physics_process", false)
+	var player_collision = player.get_node("Collision")  # Presupun că numele nodului de coliziune este "Collision"
+	player_collision.set_deferred("disabled", true)
+
+	# Salvează viteza și direcția vehiculului
+	last_velocity = velocity
+	last_direction = velocity.normalized()
+
+	# Activează mașina
+	call_deferred("set", "is_current_character_active", true)
+
+	# Activează indicatorul pentru că jucătorul este în vehicul
+	is_in_vehicle = true
+
+	# O dată ce am făcut switch, ștergem referința
+	#player_in_area = null
+	print("Player entered vehicle")
+
+func exit_vehicle(player):
+	print("asadada")
+	camera.enabled = false
+	player.activate_camera();
+	# Dezactivează mașina
+	is_current_character_active = false  # Dezactivează vehiculul
+
+	# Activează player-ul în mod sigur
+	player.is_current_character_active = true  # Activează playerul
+	player.visible = true  # Face playerul vizibil
+	player.set_physics_process(true)  # Permite procesarea fizicii pentru player
+	var player_collision = player.get_node("Collision")  # Presupun că numele nodului de coliziune este "Collision"
+	player_collision.set_deferred("disabled", false)
+	# Repoziționează playerul lângă mașină
+	player.position = position + Vector2(0, -50)  # Ajustează această valoare în funcție de poziția dorită
+
+	# Activează indicatorul pentru că jucătorul a ieșit din vehicul
+	is_in_vehicle = false
+
+	# Păstrează direcția și viteza vehiculului
+	# Asigură-te că direcția este corectă
+
+	# O dată ce am făcut exit, jucătorul poate interacționa din nou cu vehiculul
+	player_in_area = null
+	print("Player exited vehicle")
+
 
 
 
 func _physics_process(delta: float) -> void:
 	if is_current_character_active:
-		$Camera2D.enabled = true
+		#$Camera2D.enabled = true
 		acceleration = Vector2.ZERO
 		get_input()
 		calculate_steering(delta)
+		velocity += acceleration * delta
+		apply_friction(delta)
 	else:
-		$Camera2D.enabled = false
-
-	velocity += acceleration * delta
+		#$Camera2D.enabled = false
+		velocity = last_velocity
+		
+	
 	move_and_slide()
-	apply_friction(delta)
 
 func get_input():
 	var turn = Input.get_axis("move_left", "move_right")
@@ -61,7 +136,7 @@ func get_input():
 		acceleration = transform.x * braking
 
 func apply_friction(delta):
-	if acceleration == Vector2.ZERO and velocity.length() < 50:
+	if acceleration == Vector2.ZERO and velocity.length() < 10:
 		velocity = Vector2.ZERO
 
 	var friction_force = velocity * friction * delta

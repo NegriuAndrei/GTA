@@ -13,12 +13,23 @@ radius = 311.223
 position = Vector2(2, 0)
 scale = Vector2(0.055, 0.055)
 script = ExtResource("1_0f027")
+steering_angle = 12
 engine_power = 340
-slip_speed = 35
+friction = -100
+drag = 0.05
+max_speed_reverse = 20
+slip_speed = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
 texture = ExtResource("2_2c62f")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+rotation = -1.5708
+enabled = false
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-14.5, -0.5)
@@ -28,5 +39,3 @@ shape = SubResource("RectangleShape2D_gyfs4")
 
 [node name="enter_car" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_uoj53")
-
-[node name="Camera2D" type="Camera2D" parent="."]
