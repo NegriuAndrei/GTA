@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbf0qqts4b6y1"]
+[gd_scene load_steps=5 format=3 uid="uid://boeofnrmwtda3"]
 
 [ext_resource type="Script" uid="uid://dl54fo16v4t4r" path="res://assets/scripts/car.gd" id="1_a11c2"]
 [ext_resource type="Texture2D" uid="uid://dhbgte2l8w0vi" path="res://assets/cars/police_car.png" id="2_a11c2"]
