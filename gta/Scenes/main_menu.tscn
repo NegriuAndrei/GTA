@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://hbu5xebhs6r3"]
 
 [ext_resource type="Texture2D" uid="uid://b1amcs22s15gb" path="res://assets/Animations/Background.png" id="1_28flt"]
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Script" uid="uid://dttqmwxxhka07" path="res://Scenes/main_menu.gd" id="1_48xlc"]
 [ext_resource type="Shader" uid="uid://ctxcriyslebcf" path="res://assets/shaders/screen_effect.gdshader" id="3_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://c73nfy1vjofx0" path="res://assets/shaders/monitor2.png" id="4_n45e2"]
 
