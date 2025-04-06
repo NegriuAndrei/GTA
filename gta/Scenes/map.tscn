@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://ct21lmssm88h0"]
+[gd_scene load_steps=38 format=4 uid="uid://ct21lmssm88h0"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://c0gco60wnwjry" path="res://Scenes/police&npcs.tscn" id="22_tuwt4"]
 [ext_resource type="Texture2D" uid="uid://b1akkgvox8jft" path="res://assets/cars/minim_border.png" id="23_1ye5v"]
 [ext_resource type="Texture2D" uid="uid://cwnauutvaepqo" path="res://assets/cars/pointu-removebg-preview.png" id="25_1ye5v"]
+[ext_resource type="PackedScene" uid="uid://bck4bitpvqf4u" path="res://Scenes/car5.tscn" id="26_pptwf"]
 [ext_resource type="PackedScene" uid="uid://cj3ubu5754jbg" path="res://Scenes/human_npc.tscn" id="28_078fj"]
 [ext_resource type="Script" uid="uid://bwjso7jrem4n7" path="res://assets/scripts/npc_movement.gd" id="29_unquq"]
 
@@ -902,7 +903,38 @@ steering_rate = 2.0
 max_speed = 400.0
 path_follow_node = NodePath("../Path2D/PathFollow2D")
 
+[node name="Police2" parent="." instance=ExtResource("17_j4oe2")]
+position = Vector2(-62, -235)
+script = ExtResource("15_x5dfk")
+engine_power = 900
+slip_speed = 400
+path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
+path_follow_node = NodePath("../Path2D/PathFollow2D")
+
+[node name="Police3" parent="." instance=ExtResource("17_j4oe2")]
+position = Vector2(-8, -781)
+script = ExtResource("15_x5dfk")
+engine_power = 900
+slip_speed = 400
+path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
+path_follow_node = NodePath("../Path2D/PathFollow2D")
+
+[node name="Police4" parent="." instance=ExtResource("17_j4oe2")]
+position = Vector2(644, -427)
+script = ExtResource("15_x5dfk")
+engine_power = 900
+slip_speed = 400
+path_speed = 100.0
+steering_rate = 2.0
+max_speed = 400.0
+path_follow_node = NodePath("../Path2D/PathFollow2D")
+
 [node name="Police & NPC 1" parent="." instance=ExtResource("22_tuwt4")]
+position = Vector2(555, 4)
 
 [node name="Minimap" type="CanvasLayer" parent="."]
 
@@ -937,6 +969,20 @@ zoom = Vector2(0.5, 0.5)
 position = Vector2(120, 120)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("25_1ye5v")
+
+[node name="Car" parent="Minimap/SubViewportContainer" instance=ExtResource("26_pptwf")]
+position = Vector2(-525.175, -1200.1)
+
+[node name="Car2" parent="Minimap/SubViewportContainer" instance=ExtResource("26_pptwf")]
+position = Vector2(-586.175, -880.1)
+
+[node name="Car3" parent="Minimap/SubViewportContainer" instance=ExtResource("26_pptwf")]
+position = Vector2(7.82501, -782.1)
+rotation = 0.314159
+
+[node name="Car4" parent="Minimap/SubViewportContainer" instance=ExtResource("26_pptwf")]
+position = Vector2(-828.175, -1426.1)
+rotation = -0.127409
 
 [node name="TextureRect" type="TextureRect" parent="Minimap"]
 offset_left = 791.0
@@ -1226,3 +1272,15 @@ offset_right = 1373.0
 offset_bottom = 851.0
 texture = ExtResource("2_x5dfk")
 stretch_mode = 4
+
+[node name="Car" parent="." instance=ExtResource("26_pptwf")]
+position = Vector2(578, -759)
+
+[node name="Car2" parent="." instance=ExtResource("8_rg57b")]
+position = Vector2(828, -613)
+
+[node name="Car3" parent="." instance=ExtResource("8_rg57b")]
+position = Vector2(821, -215)
+
+[node name="Car4" parent="." instance=ExtResource("19_vtkp8")]
+position = Vector2(993, -45)
