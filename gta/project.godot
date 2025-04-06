@@ -14,13 +14,14 @@ config/name="GTA"
 run/main_scene="uid://hbu5xebhs6r3"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
-<<<<<<<Updatedupstreamrun/main_scene="uid://uqdpcjl7yspt"
 window/size/viewport_height=864
 window/stretch/mode="viewport"
 
 [autoload]
 
+
 Global="*res://assets/scripts/Global.gd"
+Musicplayer="*res://Scenes/musicplayer.tscn"
 
 [display]
 

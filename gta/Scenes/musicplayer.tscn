@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv01td6duf61i"]
+
+[ext_resource type="Script" uid="uid://8ytsrq5g0lds" path="res://Scenes/musicplayer.gd" id="1_lc2w4"]
+[ext_resource type="AudioStream" uid="uid://sg2xghfjc6nw" path="res://assets/Animations/Rock Sport Workout by Infraction [No Copyright Music]  Go Bounce.mp3" id="2_ft18w"]
+
+[node name="Musicplayer" type="Node"]
+script = ExtResource("1_lc2w4")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ft18w")
