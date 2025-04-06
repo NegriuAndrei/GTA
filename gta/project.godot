@@ -19,7 +19,6 @@ window/stretch/mode="viewport"
 
 [autoload]
 
-
 Global="*res://assets/scripts/Global.gd"
 Musicplayer="*res://Scenes/musicplayer.tscn"
 
