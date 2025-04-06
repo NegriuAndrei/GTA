@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ct21lmssm88h0"]
+[gd_scene load_steps=39 format=4 uid="uid://ct21lmssm88h0"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bck4bitpvqf4u" path="res://Scenes/car5.tscn" id="26_pptwf"]
 [ext_resource type="PackedScene" uid="uid://cj3ubu5754jbg" path="res://Scenes/human_npc.tscn" id="28_078fj"]
 [ext_resource type="Script" uid="uid://bwjso7jrem4n7" path="res://assets/scripts/npc_movement.gd" id="29_unquq"]
+[ext_resource type="Script" uid="uid://ugjyoucmckyt" path="res://Scenes/GameManager.gd" id="32_ak4ow"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -1284,3 +1285,18 @@ position = Vector2(821, -215)
 
 [node name="Car4" parent="." instance=ExtResource("19_vtkp8")]
 position = Vector2(993, -45)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("32_ak4ow")
+
+[node name="CanvasLayer5" type="CanvasLayer" parent="Node"]
+
+[node name="TimerLabel" type="Label" parent="Node/CanvasLayer5"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "10:00"
