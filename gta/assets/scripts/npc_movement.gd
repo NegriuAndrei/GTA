@@ -20,12 +20,21 @@ func _process(delta):
 func _physics_process(delta):
 	var collision = move_and_collide(direction * speed * delta)
 	if collision:
+		# Check if the collider is a car and it's active
+		if collision.get_collider().is_in_group("VehicleGroup"):
+			var car = collision.get_collider()
+			if car.is_current_character_active:
+				Global.add_point()
+				queue_free()  # Remove the NPC
+				return  # Skip rest of logic
+
 		# Pick a new direction on collision
 		_pick_new_direction()
 
 	# Update animation
 	if direction != Vector2.ZERO:
 		_update_animation(direction)
+
 
 func _pick_new_direction():
 	time_since_change = 0.0

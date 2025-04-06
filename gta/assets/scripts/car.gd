@@ -23,7 +23,8 @@ var player_in_area = null  # Referință la player, dacă e în apropiere
 var is_in_vehicle = false  # Verifică dacă playerul este în mașină
 
 func _ready():
-	#camera.enabled = false
+	add_to_group("VehicleGroup")
+
 	
 	
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://ct21lmssm88h0"]
+[gd_scene load_steps=36 format=4 uid="uid://ct21lmssm88h0"]
 
 [ext_resource type="Texture2D" uid="uid://bs1bypfpmxmf0" path="res://assets/tileset/DarkRoad.png" id="1_26yhd"]
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_myvm1"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="2_p3ir5"]
 [ext_resource type="Texture2D" uid="uid://c73nfy1vjofx0" path="res://assets/shaders/monitor2.png" id="2_x5dfk"]
 [ext_resource type="Texture2D" uid="uid://3s8ossq0bo5l" path="res://assets/buildings/building1.png" id="3_w7jjh"]
+[ext_resource type="Script" uid="uid://beam05ldn6xn0" path="res://Scenes/star_ui.gd" id="4_1ye5v"]
+[ext_resource type="AudioStream" uid="uid://cibecldp27u6o" path="res://assets/police_siren.mp3" id="5_8cxpi"]
 [ext_resource type="PackedScene" uid="uid://brhletrk2gc20" path="res://Scenes/car2.tscn" id="5_fls3e"]
 [ext_resource type="PackedScene" uid="uid://b2xe8oler1cp1" path="res://Scenes/pause_menu.tscn" id="5_np2xp"]
 [ext_resource type="Texture2D" uid="uid://bgwqb505feo5p" path="res://assets/buildings/building_tall1.png" id="6_6q3n4"]
@@ -21,10 +23,12 @@
 [ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="15_x5dfk"]
 [ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="17_j4oe2"]
 [ext_resource type="PackedScene" uid="uid://cvh33cr104plf" path="res://Scenes/car3.tscn" id="19_vtkp8"]
-[ext_resource type="Script" uid="uid://ruqft64a85d1" path="res://Scenes/minimap.gd" id="22_ltf6m"]
+[ext_resource type="Script" path="res://Scenes/minimap.gd" id="22_ltf6m"]
 [ext_resource type="Texture2D" uid="uid://bn400qxevdqn8" path="res://assets/cars/minimap.png" id="22_macow"]
 [ext_resource type="PackedScene" uid="uid://c0gco60wnwjry" path="res://Scenes/police&npcs.tscn" id="22_tuwt4"]
 [ext_resource type="Texture2D" uid="uid://b7e06ms4x6747" path="res://assets/cars/arrrow.png" id="24_uus22"]
+[ext_resource type="PackedScene" uid="uid://cj3ubu5754jbg" path="res://Scenes/human_npc.tscn" id="28_078fj"]
+[ext_resource type="Script" uid="uid://bwjso7jrem4n7" path="res://assets/scripts/npc_movement.gd" id="29_unquq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -134,6 +138,24 @@ tile_set = SubResource("TileSet_e0an3")
 
 [node name="Player" parent="." groups=["PlayerGroup"] instance=ExtResource("2_26yhd")]
 position = Vector2(483, -806)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+script = ExtResource("4_1ye5v")
+
+[node name="StarDisplay" type="TextureRect" parent="CanvasLayer2"]
+anchors_preset = -1
+anchor_left = 0.029
+anchor_top = 0.034
+anchor_right = 0.309
+anchor_bottom = 0.111
+offset_left = -0.408001
+offset_top = -0.376001
+offset_right = 0.0319824
+offset_bottom = 0.095993
+
+[node name="StarSound" type="AudioStreamPlayer2D" parent="CanvasLayer2"]
+stream = ExtResource("5_8cxpi")
+volume_db = 24.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -895,7 +917,7 @@ steering_rate = 2.0
 max_speed = 400.0
 path_follow_node = NodePath("../Path2D/PathFollow2D")
 
-[node name="Police & Player NPCs2" parent="." instance=ExtResource("22_tuwt4")]
+[node name="Police & NPC 1" parent="." instance=ExtResource("22_tuwt4")]
 
 [node name="Minimap" type="CanvasLayer" parent="."]
 visible = false
@@ -924,3 +946,269 @@ zoom = Vector2(0.5, 0.5)
 position = Vector2(150, 150)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("24_uus22")
+
+[node name="NPCs" type="Node" parent="."]
+
+[node name="NPC 2" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(270, -758)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 30" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(434, -206)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 31" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(885, -235)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 32" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(210, -658)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 33" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(732, -411)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 34" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(44, -241)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 35" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(509, -96.9999)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 36" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(743, -68.9999)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 37" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(875, -70.9999)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 38" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(1005, -81.9999)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 39" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(722, -177)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 40" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(352, -823)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 41" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(849, -808)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 42" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(-71, -340)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 43" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(435, -315)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 44" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(946, -564)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 45" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(697, -598)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 46" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(102, -416)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 47" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(306, -252)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 48" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(604, -793)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 49" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(109, -483)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 50" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(717, -302)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 51" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(442, -415)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 52" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(41, -563)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 53" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(145, -554)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 54" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(562, -571)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 55" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(217, -868)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 56" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(987, -233)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 57" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(215, -258)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 58" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(642, -243)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 59" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(474, -242)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 60" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(922, -776)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 61" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(931, -423)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 62" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(608, -416)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 63" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(640, -548)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 64" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(152, -805)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 65" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(695, -690)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 66" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(724, -810)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 67" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(92, -300)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 68" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(496, -369)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 69" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(-45, -450)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 70" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(501, -609)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 71" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(62, -715)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
+
+[node name="NPC 72" parent="NPCs" instance=ExtResource("28_078fj")]
+position = Vector2(821, -670)
+script = ExtResource("29_unquq")
+speed = 40.0
+direction_change_interval = 2.0
