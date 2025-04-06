@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c786m4fl7bkd5" path="res://assets/scripts/map.gd" id="1_xxutd"]
 [ext_resource type="PackedScene" uid="uid://cj3ubu5754jbg" path="res://Scenes/human_npc.tscn" id="3_33akn"]
-[ext_resource type="Script" path="res://assets/scripts/npc_movement.gd" id="4_4qcpk"]
+[ext_resource type="Script" uid="uid://bwjso7jrem4n7" path="res://assets/scripts/npc_movement.gd" id="4_4qcpk"]
 [ext_resource type="PackedScene" uid="uid://bii67q6vieu40" path="res://Scenes/car.tscn" id="5_68ihd"]
 [ext_resource type="Script" uid="uid://ku6h7kqvmefv" path="res://assets/scripts/npc_car.gd" id="6_gpp1u"]
 [ext_resource type="PackedScene" uid="uid://boeofnrmwtda3" path="res://Scenes/police_car.tscn" id="7_ivwbc"]

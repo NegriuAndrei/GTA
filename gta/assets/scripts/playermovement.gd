@@ -11,6 +11,7 @@ var is_in_vehicle = false  # Dacă player-ul este în vehicul
 var is_current_character_active = true
 
 func _ready():
+	Global.active_player = self
 	visible = true
 	set_physics_process(true)
 	print(camera.position)
