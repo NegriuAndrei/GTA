@@ -34,17 +34,13 @@ func _ready():
 func _on_entry_area_body_entered(body):
 	if body.is_in_group("PlayerGroup"):
 		player_in_area = body  # Salvează referința la player, dar nu face switch încă
-		#print("Player entered area: ", player_in_area)
 
 func _on_entry_area_body_exited(body):
 	if body == player_in_area and !is_in_vehicle:
 		player_in_area = null
-		print("am iesit")  # Dacă playerul a ieșit din aria mașinii
-		#print("Player exited area")
+		print("Player a ieșit din vehicul")
 
 func _process(delta):
-	#if player_in_area:
-		#print("Player collision active: ", !player_in_area.get_node("Collision").is_disabled())
 	if Input.is_action_just_pressed("Ui_accept") and is_in_vehicle:
 		exit_vehicle(player_in_area)
 
@@ -53,18 +49,22 @@ func _process(delta):
 		if not is_in_vehicle:
 			enter_vehicle(player_in_area)
 
-
 var last_velocity = Vector2.ZERO  # Variabilă pentru a salva viteza vehiculului
 var last_direction = Vector2.ZERO  # Variabilă pentru a salva direcția vehiculului
 
 func enter_vehicle(player):
 	emit_signal("entered_by_player", self)
 	camera.enabled = true
-	player.deactivate_camera();
-	# Dezactivează player-ul în mod sigur (call_deferred)
+	player.deactivate_camera()
+	
+	# Actualizează active_player din Global
+	Global.active_player = self  # Mașina devine playerul activ
+	
+	# Dezactivează player-ul în mod sigur
 	player.call_deferred("set", "is_current_character_active", false)
 	player.call_deferred("set", "visible", false)
 	player.call_deferred("set_physics_process", false)
+	
 	var player_collision = player.get_node("Collision")  # Presupun că numele nodului de coliziune este "Collision"
 	player_collision.set_deferred("disabled", true)
 
@@ -78,15 +78,14 @@ func enter_vehicle(player):
 	# Activează indicatorul pentru că jucătorul este în vehicul
 	is_in_vehicle = true
 
-	# O dată ce am făcut switch, ștergem referința
-	#player_in_area = null
 	print("Player entered vehicle")
 
 func exit_vehicle(player):
-	player.position = position + Vector2(0, -20) 
+	player.position = position + Vector2(0, -20)  # Repoziționează playerul lângă mașină
+
 	# Dezactivează mașina
 	is_current_character_active = false  # Dezactivează vehiculul
-	player.activate_camera();
+	player.activate_camera()
 	camera.enabled = false
 
 	# Activează player-ul în mod sigur
@@ -95,10 +94,16 @@ func exit_vehicle(player):
 	player.set_physics_process(true)  # Permite procesarea fizicii pentru player
 	var player_collision = player.get_node("Collision")  # Presupun că numele nodului de coliziune este "Collision"
 	player_collision.set_deferred("disabled", false)
-	# Repoziționează playerul lângă mașină
+
+	# Actualizează active_player din Global (playerul devine activ)
+	Global.active_player = player
+
 	# Activează indicatorul pentru că jucătorul a ieșit din vehicul
 	is_in_vehicle = false
 	player_in_area = null
+
+	print("Player exited vehicle")
+
 	
 
 

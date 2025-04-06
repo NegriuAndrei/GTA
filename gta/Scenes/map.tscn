@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://b7e06ms4x6747" path="res://assets/cars/arrrow.png" id="24_uus22"]
 [ext_resource type="PackedScene" uid="uid://cj3ubu5754jbg" path="res://Scenes/human_npc.tscn" id="28_078fj"]
 [ext_resource type="Script" uid="uid://bwjso7jrem4n7" path="res://assets/scripts/npc_movement.gd" id="29_unquq"]
+[ext_resource type="Texture2D" uid="uid://b1akkgvox8jft" path="res://assets/cars/minim_border.png" id="23_1ye5v"]
+[ext_resource type="Texture2D" uid="uid://cwnauutvaepqo" path="res://assets/cars/pointu-removebg-preview.png" id="25_1ye5v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wijl4"]
 texture = ExtResource("1_26yhd")
@@ -920,30 +922,36 @@ path_follow_node = NodePath("../Path2D/PathFollow2D")
 [node name="Police & NPC 1" parent="." instance=ExtResource("22_tuwt4")]
 
 [node name="Minimap" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Minimap"]
-offset_left = 902.0
-offset_top = 616.0
-offset_right = 1202.0
-offset_bottom = 916.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -281.825
+offset_top = -273.9
+offset_right = -41.825
+offset_bottom = -33.9
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="SubViewport" type="SubViewport" parent="Minimap/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(300, 300)
-render_target_update_mode = 0
+size = Vector2i(240, 240)
+render_target_update_mode = 4
 script = ExtResource("22_ltf6m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Minimap/SubViewportContainer/SubViewport"]
-position = Vector2(427.76, -493)
-scale = Vector2(1.6988, 1.87847)
+position = Vector2(437.825, -433.555)
+scale = Vector2(1.72216, 1.76549)
 texture = ExtResource("22_macow")
 
 [node name="MinimapCamera" type="Camera2D" parent="Minimap/SubViewportContainer/SubViewport"]
 zoom = Vector2(0.5, 0.5)
 
 [node name="Sprite2D2" type="Sprite2D" parent="Minimap/SubViewportContainer"]
-position = Vector2(150, 150)
+position = Vector2(120, 120)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("24_uus22")
 
@@ -1212,3 +1220,11 @@ position = Vector2(821, -670)
 script = ExtResource("29_unquq")
 speed = 40.0
 direction_change_interval = 2.0
+texture = ExtResource("25_1ye5v")
+
+[node name="TextureRect" type="TextureRect" parent="Minimap"]
+offset_left = 791.0
+offset_top = 510.0
+offset_right = 1193.0
+offset_bottom = 914.0
+texture = ExtResource("23_1ye5v")
